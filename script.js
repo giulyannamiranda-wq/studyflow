@@ -1,68 +1,69 @@
 
-const formulario = document.getElementById("form-tarefa");
-const campo = document.getElementById("nova-tarefa");
-const lista = document.getElementById("lista-tarefas");
-const contador = document.getElementById("contador");
-const mensagemVazia = document.getElementById("mensagem-vazia");
+let lendo = false;
+let falaAtual = null;
 
-let tarefas = JSON.parse(localStorage.getItem("studyflow-tarefas") || "[]");
-
-function salvar() {
-  localStorage.setItem("studyflow-tarefas", JSON.stringify(tarefas));
+function finalizarLeitura() {
+    lendo = false;
+    falaAtual = null;
 }
 
-function renderizar() {
-  lista.innerHTML = "";
+function lerEmVozAlta() {
+    // Verifica se o navegador oferece suporte à leitura
+    if (!("speechSynthesis" in window)) {
+        alert("Seu navegador não suporta leitura em voz alta.");
+        return;
+    }
 
-  tarefas.forEach((tarefa, indice) => {
-    const item = document.createElement("li");
-    if (tarefa.concluida) item.classList.add("concluida");
+    // Se já existe uma leitura, pausa ou retoma
+    if (lendo) {
+        if (speechSynthesis.paused) {
+            speechSynthesis.resume();
+        } else {
+            speechSynthesis.pause();
+        }
+        return;
+    }
 
-    const check = document.createElement("input");
-    check.type = "checkbox";
-    check.checked = tarefa.concluida;
-    check.setAttribute("aria-label", "Marcar tarefa como concluída");
+    // Busca o conteúdo principal da página
+    const conteudo = document.querySelector("main");
 
-    check.addEventListener("change", () => {
-      tarefas[indice].concluida = check.checked;
-      salvar();
-      renderizar();
-    });
+    if (!conteudo) {
+        alert("Não foi possível encontrar o conteúdo da página.");
+        return;
+    }
 
-    const texto = document.createElement("span");
-    texto.textContent = tarefa.texto;
+    const texto = conteudo.innerText.trim();
 
-    const excluir = document.createElement("button");
-    excluir.textContent = "Excluir";
-    excluir.className = "excluir";
+    if (!texto) {
+        alert("Não há texto para ler.");
+        return;
+    }
 
-    excluir.addEventListener("click", () => {
-      tarefas.splice(indice, 1);
-      salvar();
-      renderizar();
-    });
+    // Interrompe qualquer leitura anterior
+    speechSynthesis.cancel();
 
-    item.append(check, texto, excluir);
-    lista.appendChild(item);
-  });
+    // Cria uma nova leitura
+    falaAtual = new SpeechSynthesisUtterance(texto);
 
-  const concluidas = tarefas.filter(t => t.concluida).length;
-  contador.textContent = `${concluidas} de ${tarefas.length} concluídas`;
-  mensagemVazia.hidden = tarefas.length > 0;
+    falaAtual.lang = "pt-BR";
+
+    // Atualiza o estado quando a leitura terminar
+    falaAtual.onend = finalizarLeitura;
+
+    // Atualiza o estado caso ocorra um erro
+    falaAtual.onerror = finalizarLeitura;
+
+    lendo = true;
+
+    // Inicia a leitura
+    speechSynthesis.speak(falaAtual);
 }
 
-formulario.addEventListener("submit", evento => {
-  evento.preventDefault();
+// Interrompe a leitura quando necessário
+function pararLeitura() {
+    if ("speechSynthesis" in window) {
+        speechSynthesis.cancel();
+    }
 
-  const texto = campo.value.trim();
-  if (!texto) return;
-
-  tarefas.push({ texto, concluida: false });
-  salvar();
-  renderizar();
-
-  campo.value = "";
-  campo.focus();
-});
-
-renderizar();
+    finalizarLeitura();
+}
