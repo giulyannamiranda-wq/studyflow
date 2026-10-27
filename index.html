@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow | Organize seus estudos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="topo">
+    <a class="logo" href="#">Study<span>Flow.</span></a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#tarefas">Minhas tarefas</a>
+      <a href="#dicas">Dicas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div>
+        <p class="etiqueta">SEU NOVO JEITO DE ESTUDAR</p>
+        <h1>Organize seus estudos.<br>
+          <span>Conquiste seus objetivos.</span>
+        </h1>
+        <p class="descricao">
+          Planeje sua rotina, organize suas tarefas e estude
+          com mais tranquilidade. Um passo de cada vez!
+        </p>
+        <a class="botao" href="#tarefas">Começar agora →</a>
+      </div>
+      <div class="ilustracao">📚✨</div>
+    </section>
+
+    <section class="painel" id="tarefas">
+      <div class="titulo-secao">
+        <div>
+          <p class="etiqueta">PLANEJAMENTO</p>
+          <h2>Minhas tarefas</h2>
+        </div>
+        <span class="contador" id="contador">0 concluídas</span>
+      </div>
+
+      <form id="form-tarefa">
+        <input id="nova-tarefa"
+          type="text"
+          placeholder="Ex.: Estudar matemática"
+          required>
+        <button type="submit">+ Adicionar</button>
+      </form>
+
+      <ul id="lista-tarefas"></ul>
+      <p id="mensagem-vazia">✨ Suas tarefas aparecerão aqui!</p>
+    </section>
+
+    <section class="dicas" id="dicas">
+      <p class="etiqueta">PEQUENOS HÁBITOS, GRANDES RESULTADOS</p>
+      <h2>3 dicas para estudar melhor</h2>
+
+      <div class="cartoes">
+        <article class="cartao">
+          <span>🗓️</span>
+          <h3>Crie uma rotina</h3>
+          <p>Defina horários realistas para cada matéria.</p>
+        </article>
+
+        <article class="cartao">
+          <span>🎯</span>
+          <h3>Tenha prioridades</h3>
+          <p>Comece pelas tarefas mais importantes.</p>
+        </article>
+
+        <article class="cartao">
+          <span>☕</span>
+          <h3>Faça pausas</h3>
+          <p>Descanse entre os períodos de concentração.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>StudyFlow © 2026 — Aprender também é se organizar. 💜</p>
+  </footer>
+
+</body>
+</html>

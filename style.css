@@ -1,0 +1,252 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f8fc;
+  color: #202344;
+  line-height: 1.6;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  background: white;
+  border-bottom: 1px solid #ececf5;
+}
+
+.logo {
+  color: #242344;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo span, h1 span {
+  color: #8065e8;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #555773;
+  font-size: 14px;
+}
+
+.hero {
+  margin: 35px auto;
+  max-width: 1100px;
+  padding: 65px 7%;
+  border-radius: 25px;
+  background: linear-gradient(120deg, #eeeaff, #e8f1ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.etiqueta {
+  color: #8065e8;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 15px 0;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.2;
+}
+
+.descricao {
+  color: #656780;
+  max-width: 480px;
+  margin-bottom: 25px;
+}
+
+.botao, button {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  background: #8065e8;
+  color: white;
+  padding: 13px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ilustracao {
+  font-size: clamp(70px, 10vw, 130px);
+  padding: 20px;
+}
+
+.painel, .dicas {
+  max-width: 1000px;
+  margin: 55px auto;
+  padding: 0 25px;
+}
+
+.titulo-secao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+h2 {
+  margin-top: 5px;
+  font-size: 27px;
+}
+
+.contador {
+  color: #8065e8;
+  background: #eeeaff;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+#form-tarefa {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  min-width: 0;
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #dedfee;
+  border-radius: 10px;
+  font-size: 15px;
+  outline-color: #8065e8;
+}
+
+#lista-tarefas {
+  list-style: none;
+  margin-top: 15px;
+}
+
+#lista-tarefas li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #ececf5;
+  padding: 14px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+#lista-tarefas li.concluida span {
+  text-decoration: line-through;
+  color: #9293a5;
+}
+
+#lista-tarefas li span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+#lista-tarefas input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+#lista-tarefas .excluir {
+  background: #fff0f0;
+  color: #c24141;
+  padding: 7px 10px;
+}
+
+#mensagem-vazia {
+  color: #88899e;
+  text-align: center;
+  padding: 25px;
+}
+
+.dicas {
+  text-align: center;
+}
+
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 25px;
+  text-align: left;
+}
+
+.cartao {
+  background: white;
+  border: 1px solid #ececf5;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.cartao span {
+  font-size: 32px;
+}
+
+.cartao h3 {
+  margin: 12px 0 7px;
+}
+
+.cartao p {
+  color: #74758b;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #77788d;
+  font-size: 13px;
+  background: white;
+}
+
+@media (max-width: 650px) {
+  .topo {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    gap: 15px;
+  }
+
+  .hero {
+    margin: 20px 12px;
+    padding: 35px 25px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ilustracao {
+    align-self: center;
+  }
+
+  #form-tarefa {
+    flex-direction: column;
+  }
+
+  .cartoes {
+    grid-template-columns: 1fr;
+  }
+}
