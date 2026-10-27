@@ -12,27 +12,60 @@
 
   <header class="topo">
     <a class="logo" href="#">Study<span>Flow.</span></a>
-    <nav>
+
+    <nav aria-label="Menu principal">
       <a href="#inicio">Início</a>
       <a href="#tarefas">Minhas tarefas</a>
       <a href="#dicas">Dicas</a>
     </nav>
   </header>
 
+  <!-- Recursos de acessibilidade -->
+  <section class="acessibilidade" aria-label="Opções de acessibilidade">
+    <button type="button"
+      onclick="alterarTamanhoTexto(1)"
+      aria-label="Aumentar tamanho do texto">
+      A+
+    </button>
+
+    <button type="button"
+      onclick="alterarTamanhoTexto(-1)"
+      aria-label="Diminuir tamanho do texto">
+      A-
+    </button>
+
+    <button type="button"
+      onclick="lerEmVozAlta()"
+      aria-label="Ouvir ou pausar a leitura da página">
+      🔊 Ouvir página
+    </button>
+
+    <button type="button"
+      onclick="pararLeitura()"
+      aria-label="Parar a leitura">
+      ⏹ Parar
+    </button>
+  </section>
+
   <main>
     <section class="hero" id="inicio">
       <div>
         <p class="etiqueta">SEU NOVO JEITO DE ESTUDAR</p>
-        <h1>Organize seus estudos.<br>
+
+        <h1>
+          Organize seus estudos.<br>
           <span>Conquiste seus objetivos.</span>
         </h1>
+
         <p class="descricao">
           Planeje sua rotina, organize suas tarefas e estude
           com mais tranquilidade. Um passo de cada vez!
         </p>
+
         <a class="botao" href="#tarefas">Começar agora →</a>
       </div>
-      <div class="ilustracao">📚✨</div>
+
+      <div class="ilustracao" aria-hidden="true">📚✨</div>
     </section>
 
     <section class="painel" id="tarefas">
@@ -41,40 +74,50 @@
           <p class="etiqueta">PLANEJAMENTO</p>
           <h2>Minhas tarefas</h2>
         </div>
+
         <span class="contador" id="contador">0 concluídas</span>
       </div>
 
       <form id="form-tarefa">
-        <input id="nova-tarefa"
+        <label for="nova-tarefa">Nova tarefa</label>
+
+        <input
+          id="nova-tarefa"
           type="text"
           placeholder="Ex.: Estudar matemática"
-          required>
+          required
+        >
+
         <button type="submit">+ Adicionar</button>
       </form>
 
       <ul id="lista-tarefas"></ul>
-      <p id="mensagem-vazia">✨ Suas tarefas aparecerão aqui!</p>
+
+      <p id="mensagem-vazia">
+        ✨ Suas tarefas aparecerão aqui!
+      </p>
     </section>
 
     <section class="dicas" id="dicas">
       <p class="etiqueta">PEQUENOS HÁBITOS, GRANDES RESULTADOS</p>
+
       <h2>3 dicas para estudar melhor</h2>
 
       <div class="cartoes">
         <article class="cartao">
-          <span>🗓️</span>
+          <span aria-hidden="true">🗓️</span>
           <h3>Crie uma rotina</h3>
           <p>Defina horários realistas para cada matéria.</p>
         </article>
 
         <article class="cartao">
-          <span>🎯</span>
+          <span aria-hidden="true">🎯</span>
           <h3>Tenha prioridades</h3>
           <p>Comece pelas tarefas mais importantes.</p>
         </article>
 
         <article class="cartao">
-          <span>☕</span>
+          <span aria-hidden="true">☕</span>
           <h3>Faça pausas</h3>
           <p>Descanse entre os períodos de concentração.</p>
         </article>
